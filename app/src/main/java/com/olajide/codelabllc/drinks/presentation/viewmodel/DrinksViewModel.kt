@@ -34,18 +34,14 @@ class DrinksViewModel @Inject constructor(
             _conversion.value = DrinksEvent.Loading
             when (val responseData = mainRepository.getDrinks(letter)) {
                 is DataHandler.Failure -> {
-                    Log.e("LogListOfDrink1",responseData.message!!)
-                    _conversion.value = DrinksEvent.Failure(responseData.message)
+                    _conversion.value = DrinksEvent.Failure(responseData.message!!)
                 }
 
                 is DataHandler.Success -> {
-                    Log.d("LogListOfDrink2", responseData.data!!.drinks.toString())
                     _conversion.value = DrinksEvent.Success(responseData.data)
-                    Log.d("LogListOfDrinks2", "Success")
                 }
                 else -> {
                     Log.e("LogListOfDrinks3", responseData.message!!)
-
                 }
             }
         }

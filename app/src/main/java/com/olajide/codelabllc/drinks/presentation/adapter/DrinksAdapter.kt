@@ -1,5 +1,6 @@
 package com.olajide.codelabllc.drinks.presentation.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -9,16 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.olajide.codelabllc.databinding.DrinksItemBinding
 import com.olajide.codelabllc.drinks.common.DrinksDiffUtils
+import com.olajide.codelabllc.drinks.data.entity.Drink
 import com.olajide.codelabllc.drinks.data.entity.DrinksDetail
 
-class DrinksAdapter : RecyclerView.Adapter<DrinksAdapter.ViewHolder>(), Filterable {
-    private var drinkList = ArrayList<DrinksDetail>()
+class DrinksAdapter : RecyclerView.Adapter<DrinksAdapter.DrinksViewHolder>(), Filterable {
+    private var drinkList = ArrayList<Drink>()
 
     // stores and recycles views as they are scrolled off screen
-    class ViewHolder(val binding: DrinksItemBinding) :
+    class DrinksViewHolder(private val binding: DrinksItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind( drinksDetail: DrinksDetail) {
+        fun bind( drinksDetail: Drink) {
             binding.strCategory.text = drinksDetail.strCategory
             binding.strImageSource.load(drinksDetail.strImageSource)
             binding.strIngredient1.text = drinksDetail.strIngredient1
@@ -33,9 +35,9 @@ class DrinksAdapter : RecyclerView.Adapter<DrinksAdapter.ViewHolder>(), Filterab
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ViewHolder {
+    ): DrinksViewHolder {
 
-        return ViewHolder(
+        return DrinksViewHolder(
             DrinksItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
@@ -45,7 +47,7 @@ class DrinksAdapter : RecyclerView.Adapter<DrinksAdapter.ViewHolder>(), Filterab
     }
 
     override fun onBindViewHolder(
-        holder: ViewHolder,
+        holder: DrinksViewHolder,
         position: Int
     ) {
         val currentItem = drinkList[position]
@@ -61,11 +63,13 @@ class DrinksAdapter : RecyclerView.Adapter<DrinksAdapter.ViewHolder>(), Filterab
     }
 
 
-    fun setItem(listOfBillsItems: ArrayList<DrinksDetail>) {
-        val payBillsDiffUtil =
-            DrinksDiffUtils(drinkList, listOfBillsItems)
-        val diffUtilResult = DiffUtil.calculateDiff(payBillsDiffUtil)
-        drinkList = listOfBillsItems
+    fun setItem(listOfDrinksItems: ArrayList<Drink>) {
+        val drinksDiffUtil =
+            DrinksDiffUtils(drinkList, listOfDrinksItems)
+        val diffUtilResult = DiffUtil.calculateDiff(drinksDiffUtil)
+        drinkList = listOfDrinksItems
+
+        Log.d("drinkList", "$drinkList")
         diffUtilResult.dispatchUpdatesTo(this)
     }
 }

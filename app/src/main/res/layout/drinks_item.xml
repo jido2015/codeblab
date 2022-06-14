@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/strCategory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         ></TextView>
     <ImageView
         android:id="@+id/strImageSource"
@@ -18,32 +18,32 @@
     <TextView
         android:id="@+id/strIngredient1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         ></TextView>
     <TextView
         android:id="@+id/strIngredient2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         ></TextView>
     <TextView
         android:id="@+id/strIngredient3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         ></TextView>
     <TextView
         android:id="@+id/strDrink"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         ></TextView>
     <TextView
         android:id="@+id/strInstructions"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         ></TextView>
     <TextView
         android:id="@+id/strAlcoholic"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         ></TextView>
 
 </LinearLayout>
