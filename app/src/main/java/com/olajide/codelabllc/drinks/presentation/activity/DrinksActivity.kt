@@ -11,6 +11,7 @@ import com.olajide.codelabllc.R
 import com.olajide.codelabllc.databinding.DrinksLayoutBinding
 import com.olajide.codelabllc.drinks.data.entity.DrinksDetail
 import com.olajide.codelabllc.drinks.presentation.adapter.DrinksAdapter
+import com.olajide.codelabllc.drinks.presentation.viewmodel.DrinksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,6 +26,8 @@ class DrinksActivity: AppCompatActivity(R.layout.drinks_layout) {
         super.onCreate(savedInstanceState)
         drinksAdapter = DrinksAdapter()
         setUpRecyclerView()
+        viewModel.fetchDrinks("a").toString()
+
     }
 
     private fun setUpRecyclerView() {
