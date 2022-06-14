@@ -3,10 +3,7 @@ package com.olajide.codelabllc.drinks.presentation.activity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.olajide.codelabllc.R
 import com.olajide.codelabllc.databinding.DrinksLayoutBinding
 import com.olajide.codelabllc.drinks.data.entity.DrinksDetail
@@ -24,10 +21,10 @@ class DrinksActivity: AppCompatActivity(R.layout.drinks_layout) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = DrinksLayoutBinding.inflate(layoutInflater)
         drinksAdapter = DrinksAdapter()
         setUpRecyclerView()
         viewModel.fetchDrinks("a").toString()
-
     }
 
     private fun setUpRecyclerView() {
