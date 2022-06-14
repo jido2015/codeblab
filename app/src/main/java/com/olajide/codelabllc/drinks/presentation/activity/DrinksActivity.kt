@@ -2,8 +2,10 @@ package com.olajide.codelabllc.drinks.presentation.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olajide.codelabllc.databinding.DrinksLayoutBinding
@@ -26,11 +28,28 @@ class DrinksActivity: AppCompatActivity() {
         binding = DrinksLayoutBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         drinksAdapter = DrinksAdapter()
         setUpRecyclerView()
-
         searchResponse()
         viewModel.fetchDrinks("a").toString()
+
+        //to call a method whenever there is some change on the EditText
+
+        binding.searchView.queryHint = "Search for drinks by alphabet …"
+        binding.searchView.imeOptions = EditorInfo.IME_ACTION_DONE
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                viewModel.fetchDrinks(query).toString()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                viewModel.fetchDrinks(newText).toString()
+                return true
+            }
+        })
     }
 
     private fun setUpRecyclerView() {
