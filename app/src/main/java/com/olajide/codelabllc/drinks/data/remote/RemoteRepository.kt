@@ -6,7 +6,7 @@ import com.olajide.codelabllc.drinks.resource.DataHandler
 import javax.inject.Inject
 
 class RemoteRepository @Inject constructor(
-    private val drinkApiService: ProvideDrinksApiService,) : DrinksRepository {
+    private val drinkApiService: DrinksApiService,) : DrinksRepository {
     override suspend fun getDrinks( search: String
     ): DataHandler<DrinksDto> {
 

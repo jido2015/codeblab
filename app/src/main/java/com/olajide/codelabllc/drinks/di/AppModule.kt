@@ -1,7 +1,7 @@
 package com.olajide.codelabllc.drinks.di
 
 
-import com.olajide.codelabllc.drinks.data.remote.ProvideDrinksApiService
+import com.olajide.codelabllc.drinks.data.remote.DrinksApiService
 import com.olajide.codelabllc.drinks.data.remote.RemoteRepository
 import com.olajide.codelabllc.drinks.domain.repository.DrinksRepository
 import com.olajide.codelabllc.drinks.resource.DispatchProvider
@@ -22,14 +22,14 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDrinksApiService(): ProvideDrinksApiService =
+    fun provideDrinksApiService(): DrinksApiService =
         Retrofit.Builder().baseUrl("https://www.thecocktaildb.com/").addConverterFactory(
             GsonConverterFactory.create()
-        ).build().create(ProvideDrinksApiService::class.java)
+        ).build().create(DrinksApiService::class.java)
 
     @Singleton
     @Provides
-    fun provideRemoteRepository(api: ProvideDrinksApiService): DrinksRepository = RemoteRepository(api)
+    fun provideRemoteRepository(api: DrinksApiService): DrinksRepository = RemoteRepository(api)
 
     @Singleton
     @Provides
