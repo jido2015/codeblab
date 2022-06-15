@@ -18,20 +18,20 @@ class DrinksAdapter : RecyclerView.Adapter<DrinksAdapter.DrinksViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind( drinksDetail: Drink) {
-            binding.strCategory.text = drinksDetail.strCategory
+            binding.strCategory.text = "Cocktail category: "+drinksDetail.strCategory
             binding.strImageSource.load(drinksDetail.strDrinkThumb)
-            binding.strIngredient1.text = drinksDetail.strIngredient1
-            binding.strIngredient2.text = drinksDetail.strIngredient2
-            binding.strIngredient3.text = drinksDetail.strIngredient3
-            binding.strDrink.text = drinksDetail.strDrink
-            binding.strInstructions.text = drinksDetail.strInstructions
+            binding.strIngredient1.text = "Ingredients 1: "+drinksDetail.strIngredient1
+            binding.strIngredient2.text = "Ingredients 2: "+drinksDetail.strIngredient2
+            binding.strIngredient3.text = "Ingredients 3: "+drinksDetail.strIngredient3
+            binding.strDrink.text = "Type of drink: "+drinksDetail.strDrink
+            binding.strInstructions.text = "Instructions: "+drinksDetail.strInstructions
 
             when (drinksDetail.strAlcoholic) {
                 "Alcoholic" -> {
-                    binding.strAlcoholic.text ="Yes"
+                    binding.strAlcoholic.text ="Is alcoholic: Yes"
                 }
                 else -> {
-                    binding.strAlcoholic.text ="No"
+                    binding.strAlcoholic.text ="Is alcoholic: No"
                 }
             }
         }
